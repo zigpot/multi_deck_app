@@ -1,0 +1,70 @@
+{
+  "id": "01-basic-greetings",
+  "title": "Basic Greetings",
+  "description": "Learn German greetings vocabulary and phrases with interactive flashcards",
+  "level": "Beginner",
+  "topic": "Greetings",
+  "cards": [
+    {
+      "id": 0,
+      "english": "yet.",
+      "german": "Nicht!",
+      "englishAudio": "audio/01-basic-greetings/pair_002_english.mp3",
+      "germanAudio": "audio/01-basic-greetings/pair_002_german.mp3",
+      "literalWordOrder": [
+        {
+          "word": "Not",
+          "type": "adverb"
+        },
+        {
+          "word": "!",
+          "type": "punctuation"
+        }
+      ],
+      "germanWordBreakdown": [
+        {
+          "word": "Nicht",
+          "type": "adverb"
+        },
+        {
+          "word": "!",
+          "type": "punctuation"
+        }
+      ],
+      "correctAnswers": {
+        "clause_type": "main clause",
+        "sentence_structure": "SVO (Subject → Verb → Object)",
+        "case_type": "nominative"
+      },
+      "detailedAnalysis": {
+        "sentence_type": "This is a simple main clause.",
+        "german_structure": "In German, adverbs like 'nicht' often come before the verb.",
+        "case_reasoning": "In this case, 'nicht' is an adverb modifying the verb '!', which does not have a case.",
+        "word_roles": "The adverb 'nicht' negates the verb, while '!' is a punctuation mark.",
+        "key_difference": "The placement of adverbs before the verb is a common difference between English and German word order."
+      },
+      "practiceTask": "Create flashcards with English sentences containing 'yet' and ask learners to translate them into German using 'Nicht!'",
+      "dropdownOptions": {
+        "clause_type": [
+          "main clause",
+          "question clause",
+          "subordinate clause",
+          "modal-infinitive"
+        ],
+        "sentence_structure": [
+          "SVO (Subject → Verb → Object)",
+          "VSO (Verb → Subject → Object)",
+          "SOV (Subject → Object → Verb)",
+          "VOS (Verb → Object → Subject)"
+        ],
+        "case_type": [
+          "nominative",
+          "accusative",
+          "dative",
+          "genitive"
+        ]
+      }
+    }
+  ],
+  "audioFolder": "audio/01-basic-greetings"
+}

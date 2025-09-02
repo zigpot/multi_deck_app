@@ -1,0 +1,182 @@
+{
+  "id": "02-family-words",
+  "title": "Family Words",
+  "description": "Learn German words vocabulary and phrases with interactive flashcards",
+  "level": "Intermediate",
+  "topic": "Words",
+  "cards": [
+    {
+      "id": 0,
+      "english": "Wait.",
+      "german": "warten.",
+      "englishAudio": "audio/02-family-words/pair_001_english.mp3",
+      "germanAudio": "audio/02-family-words/pair_001_german.mp3",
+      "literalWordOrder": [
+        {
+          "word": "Wait",
+          "type": "verb"
+        },
+        {
+          "word": ".",
+          "type": "punctuation"
+        }
+      ],
+      "germanWordBreakdown": [
+        {
+          "word": "warten",
+          "type": "verb"
+        },
+        {
+          "word": ".",
+          "type": "punctuation"
+        }
+      ],
+      "correctAnswers": {
+        "clause_type": "main clause",
+        "sentence_structure": "VSO (Verb → Subject → Object)",
+        "case_type": "nominative"
+      },
+      "detailedAnalysis": {
+        "sentence_type": "This is a simple imperative sentence.",
+        "german_structure": "In German, imperative sentences often have the verb at the beginning.",
+        "case_reasoning": "The verb 'warten' is in its base form as it is a command.",
+        "word_roles": "The verb 'warten' is the main action, followed by a punctuation mark.",
+        "key_difference": "The key difference is the verb placement, with German often having the verb at the beginning in imperative sentences."
+      },
+      "practiceTask": "Create flashcards with English commands on one side and the corresponding German imperative form on the other side.",
+      "dropdownOptions": {
+        "clause_type": [
+          "main clause",
+          "question clause",
+          "subordinate clause",
+          "modal-infinitive"
+        ],
+        "sentence_structure": [
+          "SVO (Subject → Verb → Object)",
+          "VSO (Verb → Subject → Object)",
+          "SOV (Subject → Object → Verb)",
+          "VOS (Verb → Object → Subject)"
+        ],
+        "case_type": [
+          "nominative",
+          "accusative",
+          "dative",
+          "genitive"
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "english": "Coming.",
+      "german": "",
+      "englishAudio": "audio/02-family-words/pair_002_english.mp3",
+      "germanAudio": "audio/02-family-words/pair_002_german.mp3",
+      "literalWordOrder": [
+        {
+          "word": "Coming",
+          "type": "verb"
+        },
+        {
+          "word": ".",
+          "type": "punctuation"
+        }
+      ],
+      "germanWordBreakdown": [
+        {
+          "word": "",
+          "type": "punctuation"
+        }
+      ],
+      "correctAnswers": {
+        "clause_type": "main clause",
+        "sentence_structure": "VSO (Verb → Subject → Object)",
+        "case_type": "nominative"
+      },
+      "detailedAnalysis": {
+        "sentence_type": "Provide detailed sentence type analysis",
+        "german_structure": "Explain WHY words are positioned where they are",
+        "case_reasoning": "Detailed analysis of EACH word's case and grammatical role",
+        "word_roles": "Break down each word's role in the sentence",
+        "key_difference": "Specific differences between English and German"
+      },
+      "practiceTask": "Create a specific practice task based on this sentence pattern",
+      "dropdownOptions": {
+        "clause_type": [
+          "main clause",
+          "question clause",
+          "subordinate clause",
+          "modal-infinitive"
+        ],
+        "sentence_structure": [
+          "SVO (Subject → Verb → Object)",
+          "VSO (Verb → Subject → Object)",
+          "SOV (Subject → Object → Verb)",
+          "VOS (Verb → Object → Subject)"
+        ],
+        "case_type": [
+          "nominative",
+          "accusative",
+          "dative",
+          "genitive"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "english": "and",
+      "german": "hereinbringen.",
+      "englishAudio": "audio/02-family-words/pair_003_english.mp3",
+      "germanAudio": "audio/02-family-words/pair_003_german.mp3",
+      "literalWordOrder": [
+        {
+          "word": "and",
+          "type": "punctuation"
+        },
+        {
+          "word": "hereinbringen",
+          "type": "verb"
+        }
+      ],
+      "germanWordBreakdown": [
+        {
+          "word": "hereinbringen",
+          "type": "verb"
+        }
+      ],
+      "correctAnswers": {
+        "clause_type": "main clause",
+        "sentence_structure": "VOS (Verb → Object → Subject)",
+        "case_type": "nominative"
+      },
+      "detailedAnalysis": {
+        "sentence_type": "Imperative sentence",
+        "german_structure": "In German, the verb usually comes first in imperative sentences.",
+        "case_reasoning": "The verb 'hereinbringen' is in the imperative form, instructing someone to bring something in.",
+        "word_roles": "The word 'and' is a conjunction indicating a connection between actions. 'Hereinbringen' is the main verb of the sentence.",
+        "key_difference": "The key difference is the verb placement, with German often having the verb at the beginning of imperative sentences."
+      },
+      "practiceTask": "Create flashcards with English sentences using 'and' and ask learners to translate them into German imperative sentences.",
+      "dropdownOptions": {
+        "clause_type": [
+          "main clause",
+          "question clause",
+          "subordinate clause",
+          "modal-infinitive"
+        ],
+        "sentence_structure": [
+          "SVO (Subject → Verb → Object)",
+          "VSO (Verb → Subject → Object)",
+          "SOV (Subject → Object → Verb)",
+          "VOS (Verb → Object → Subject)"
+        ],
+        "case_type": [
+          "nominative",
+          "accusative",
+          "dative",
+          "genitive"
+        ]
+      }
+    }
+  ],
+  "audioFolder": "audio/02-family-words"
+}

@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Learning System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #667eea 75%, #764ba2 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .app-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .flag-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            display: inline-block;
+            animation: wave 2s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .app-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .deck-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* Deck Selection View */
+        .deck-selection {
+            display: block;
+        }
+
+        .deck-filters {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 15px 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50px;
+            font-size: 15px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .search-input:focus {
+            border-color: #4CAF50;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .filter-select {
+            padding: 12px 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:hover {
+            border-color: #4CAF50;
+            background: white;
+        }
+
+        .deck-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .deck-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deck-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .deck-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(76, 175, 80, 0.3);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .deck-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .deck-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .deck-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            flex: 1;
+        }
+
+        .deck-level {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .deck-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .deck-progress {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 12px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progress-shimmer 2s infinite;
+        }
+
+        @keyframes progress-shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+
+        .deck-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .deck-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn i {
+            width: 16px;
+            height: 16px;
+            margin-right: 16px;
+        }
+
+
+        /* Study View */
+        .study-view {
+            display: none;
+        }
+
+        .study-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-to-decks {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-decks:hover {
+            background: white;
+            transform: translateY(-2px);
+            border-color: #4CAF50;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Enhanced Flashcard styles */
+        .flashcard-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashcard-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 45deg, transparent, rgba(76, 175, 80, 0.03), transparent);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .english-sentence {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+            position: relative;
+            z-index: 2;
+            line-height: 1.3;
+        }
+
+        .audio-button,
+        .speak-button,
+        .nav-button,
+        .flip-button {
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audio-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .speak-button {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+        }
+
+        .flip-button {
+            background: linear-gradient(135deg, #FF5722, #D84315);
+            padding: 18px 36px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .audio-button:hover,
+        .speak-button:hover,
+        .nav-button:hover,
+        .flip-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-box {
+            background: rgba(248, 249, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(224, 224, 224, 0.5);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .section-box:hover {
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .word-tag {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 6px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .word-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .verb {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+        }
+
+        .pronoun {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+        }
+
+        .noun {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+
+        .article {
+            background: linear-gradient(135deg, #607d8b, #455a64);
+        }
+
+        .adjective {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+        }
+
+        .preposition {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+        }
+
+        .adverb {
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+        }
+
+        .punctuation {
+            background: linear-gradient(135deg, #333, #222);
+        }
+
+        .navigation {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .side-back {
+            display: none;
+        }
+
+        .side-front {
+            display: block;
+        }
+
+        .dropdown-row {
+            margin-bottom: 20px;
+        }
+
+        .dropdown-row label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(224, 224, 224, 0.5);
+            border-radius: 12px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+        }
+
+        .correct-analysis {
+            background: linear-gradient(135deg, rgba(232, 245, 232, 0.9), rgba(200, 230, 201, 0.9));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+
+        .detailed-analysis {
+            background: linear-gradient(135deg, rgba(255, 243, 224, 0.9), rgba(255, 224, 178, 0.9));
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            border: 2px solid rgba(255, 152, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .speech-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            font-weight: 600;
+            display: none;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .recording-buttons {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stop-button {
+            background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+        }
+
+        .playback-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+        }
+
+        /* Enhanced micro-interactions */
+        .card-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 3;
+        }
+
+        .score-display {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 3;
+        }
+
+        /* Floating elements */
+        .floating-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 15px;
+            }
+
+            .deck-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .app-title {
+                font-size: 2.2rem;
+            }
+
+            .english-sentence {
+                font-size: 2rem;
+            }
+
+            .deck-stats {
+                gap: 25px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .deck-filters {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .search-input {
+                min-width: auto;
+            }
+
+            .flashcard-container {
+                padding: 30px 20px;
+                min-height: 600px;
+            }
+
+            .app-header {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Loading states with better animations */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .spinner {
+            border: 4px solid rgba(76, 175, 80, 0.1);
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 25px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success feedback animation */
+        .success-pulse {
+            animation: success-pulse 0.6s ease-out;
+        }
+
+        @keyframes success-pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Improved focus states */
+        *:focus {
+            outline: 2px solid rgba(76, 175, 80, 0.5);
+            outline-offset: 2px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- App Header -->
+        <div class="app-header">
+            <h1 class="app-title">German Learning System</h1>
+            <p class="app-subtitle">Master German through interactive flashcards with speech recognition</p>
+            <div class="deck-stats">
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Total Decks</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Total Cards</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completed-decks">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="study-streak">1</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deck Selection View -->
+        <div class="deck-selection" id="deck-selection">
+            <!-- Filters and Search -->
+            <div class="deck-filters">
+                <input type="text" class="search-input" id="deck-search" placeholder="🔍 Search decks...">
+                <select class="filter-select" id="level-filter">
+                    <option value="">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+
+            <!-- Deck Grid -->
+            <div class="deck-grid" id="deck-grid">
+                <!-- Decks will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Study View -->
+        <div class="study-view" id="study-view">
+            <button class="back-to-decks" onclick="showDeckSelection()">← Back to Decks</button>
+
+            <div class="study-header">
+                <div class="study-info">
+                    <h2 id="current-deck-title">Loading...</h2>
+                    <p id="current-deck-subtitle">Loading...</p>
+                </div>
+                <div class="study-progress">
+                    <div id="card-counter">Card 1 of 1</div>
+                    <div class="progress-bar" style="width: 200px; margin-top: 5px;">
+                        <div class="progress-fill" id="study-progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-container">
+                <!-- Front side -->
+                <div class="side-front" id="front-side">
+                    <div class="english-sentence" id="english-sentence">Loading...</div>
+
+                    <!-- <button class="audio-button" onclick="playEnglishAudio()">🎵 Listen (English)</button> -->
+                    <button class="audio-button" onclick="playEnglishAudio()">
+                        <i data-lucide="volume-2"></i> Listen (English)
+                    </button>
+                    <audio id="english-audio" preload="auto"></audio>
+
+                    <div class="section-box">
+                        <div class="section-title">Literal English to German Word Order:</div>
+                        <div id="literal-word-order"></div>
+                    </div>
+
+                    <div class="section-box">
+                        <div class="section-title">Analyse the sentence</div>
+                        <div id="dropdown-options"></div>
+                    </div>
+
+                    <div class="navigation">
+                        <button class="nav-button" onclick="previousCard()">← Previous</button>
+                        <button class="flip-button" onclick="flipCard()">Show Answer →</button>
+                        <button class="nav-button" onclick="nextCard()">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Back side -->
+                <div class="side-back" id="back-side">
+                    <button class="audio-button" onclick="playGermanAudio()">🎵 Listen (German)</button>
+
+                    <audio id="german-audio" preload="auto"></audio>
+
+                    <div class="section-box">
+                        <div class="section-title">Actual German Translation:</div>
+                        <div id="german-word-breakdown"></div>
+                    </div>
+
+                    <div class="correct-analysis">
+                        <div class="section-title">Correct Analysis:</div>
+                        <div id="correct-answers"></div>
+                    </div>
+
+                    <div class="detailed-analysis">
+                        <div class="section-title">Detailed Analysis:</div>
+                        <div id="detailed-analysis"></div>
+                    </div>
+
+                    <div class="section-box">
+                        <div class="section-title">Speech Practice</div>
+                        <p>Say the German sentence: <strong id="target-sentence"></strong></p>
+
+                        <div class="recording-buttons">
+                            <button class="speak-button" id="speak-button" onclick="toggleSpeechRecognition()">Start
+                                Speaking</button>
+                            <button class="speak-button stop-button" id="stop-button" onclick="stopSpeechRecognition()"
+                                style="display: none;">Stop</button>
+                            <button class="speak-button playback-button" id="playback-button" onclick="playRecording()"
+                                style="display: none;">Hear My Voice</button>
+                        </div>
+
+                        <div id="speech-result" class="speech-result"></div>
+
+                        <div style="margin-top: 20px;">
+                            <div class="section-title">Practice Task</div>
+                            <p id="practice-task"></p>
+                            <textarea id="practice-input" placeholder="Type your practice sentence here..." style="
+                                width: 100%;
+                                height: 80px;
+                                padding: 10px;
+                                border: 2px solid #ddd;
+                                border-radius: 5px;
+                                margin-top: 10px;
+                                font-family: inherit;
+                                resize: vertical;
+                                box-sizing: border-box;
+                            "></textarea>
+                            <br>
+                            <button onclick="checkPracticeAnswer()" style="
+                                background: linear-gradient(135deg, #FF9800, #F57C00);
+                                color: white;
+                                border: none;
+                                padding: 12px 25px;
+                                border-radius: 25px;
+                                font-size: 14px;
+                                cursor: pointer;
+                                margin-top: 10px;
+                                box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+                            ">Check Practice Answer</button>
+                            <div id="practice-feedback"
+                                style="margin-top: 15px; padding: 10px; border-radius: 5px; display: none;"></div>
+                        </div>
+                    </div>
+
+                    <div class="navigation">
+                        <button class="nav-button" onclick="previousCard()">← Previous</button>
+                        <button class="flip-button" onclick="flipCard()">← Show Question</button>
+                        <button class="nav-button" onclick="nextCard()">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Multi-deck application state
+        let allDecks = [
+            {
+                "id": "02-family-words",
+                "title": "Family Words",
+                "description": "Learn German words vocabulary and phrases with interactive flashcards",
+                "level": "Intermediate",
+                "topic": "Words",
+                "cards": [
+                    {
+                        "id": 0,
+                        "english": "Wait.",
+                        "german": "warten.",
+                        "englishAudio": "audio/02-family-words/pair_001_english.mp3",
+                        "germanAudio": "audio/02-family-words/pair_001_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Wait",
+                                "type": "verb"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "warten",
+                                "type": "verb"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "VSO (Verb → Subject → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple imperative sentence.",
+                            "german_structure": "In German, imperative sentences often have the verb at the beginning.",
+                            "case_reasoning": "The verb 'warten' is in its base form as it is a command.",
+                            "word_roles": "The verb 'warten' is the main action, and the punctuation marks the end of the command.",
+                            "key_difference": "The key difference is the placement of the verb at the beginning in German imperative sentences."
+                        },
+                        "practiceTask": "Create flashcards with English commands on one side and the corresponding German imperative form on the other side.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 1,
+                        "english": "Coming.",
+                        "german": "",
+                        "englishAudio": "audio/02-family-words/pair_002_english.mp3",
+                        "germanAudio": "audio/02-family-words/pair_002_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Coming",
+                                "type": "verb"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "VSO (Verb → Subject → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "Provide detailed sentence type analysis",
+                            "german_structure": "Explain WHY words are positioned where they are",
+                            "case_reasoning": "Detailed analysis of EACH word's case and grammatical role",
+                            "word_roles": "Break down each word's role in the sentence",
+                            "key_difference": "Specific differences between English and German"
+                        },
+                        "practiceTask": "Create a specific practice task based on this sentence pattern",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "english": "and",
+                        "german": "hereinbringen.",
+                        "englishAudio": "audio/02-family-words/pair_003_english.mp3",
+                        "germanAudio": "audio/02-family-words/pair_003_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "and",
+                                "type": "punctuation"
+                            },
+                            {
+                                "word": "hereinbringen",
+                                "type": "verb"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "hereinbringen",
+                                "type": "verb"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "VOS (Verb → Object → Subject)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "Provide detailed sentence type analysis",
+                            "german_structure": "Explain WHY words are positioned where they are",
+                            "case_reasoning": "Detailed analysis of EACH word's case and grammatical role",
+                            "word_roles": "Break down each word's role in the sentence",
+                            "key_difference": "Specific differences between English and German"
+                        },
+                        "practiceTask": "Create a specific practice task based on this sentence pattern",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    }
+                ],
+                "audioFolder": "audio/02-family-words"
+            },
+            {
+                "id": "01-basic-greetings",
+                "title": "Basic Greetings",
+                "description": "Learn German greetings vocabulary and phrases with interactive flashcards",
+                "level": "Beginner",
+                "topic": "Greetings",
+                "cards": [
+                    {
+                        "id": 0,
+                        "english": "yet.",
+                        "german": "Nicht!",
+                        "englishAudio": "audio/01-basic-greetings/pair_002_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_002_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Not",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "!",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Nicht",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "!",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, adverbs like 'nicht' often come before the verb.",
+                            "case_reasoning": "In this case, 'nicht' is an adverb modifying the verb '!', which does not have a case.",
+                            "word_roles": "The adverb 'nicht' negates the verb '!', creating the meaning of 'Not!'",
+                            "key_difference": "The placement of adverbs can differ between English and German, with German often placing them before the verb."
+                        },
+                        "practiceTask": "Create a flashcard with the English word 'yet.' and the German translation 'Nicht!' to practice understanding the placement of adverbs in German.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    }
+                ],
+                "audioFolder": "audio/01-basic-greetings"
+            }
+        ];
+        let filteredDecks = [...allDecks];
+        let currentDeck = null;
+        let currentCard = 0;
+        let isShowingAnswer = false;
+        let recognition = null;
+
+        // Scoring system
+        let userAnswers = {};
+        let speechScores = {};
+
+        // Recording variables
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let isRecording = false;
+        let recordedAudioBlob = null;
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function () {
+            initSpeechRecognition();
+            renderDeckGrid();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('deck-search').addEventListener('input', filterDecks);
+            document.getElementById('level-filter').addEventListener('change', filterDecks);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+                    return;
+                }
+
+                if (document.getElementById('study-view').style.display === 'block') {
+                    switch (e.key) {
+                        case 'ArrowLeft':
+                            previousCard();
+                            break;
+                        case 'ArrowRight':
+                            nextCard();
+                            break;
+                        case 'Escape':
+                            showDeckSelection();
+                            break;
+                    }
+                }
+            });
+        }
+
+        function renderDeckGrid() {
+            const grid = document.getElementById('deck-grid');
+            grid.innerHTML = '';
+
+            if (filteredDecks.length === 0) {
+                grid.innerHTML = '<div class="loading">No decks found matching your filters.</div>';
+                return;
+            }
+
+            filteredDecks.forEach(deck => {
+                const progressPercent = deck.cards.length > 0 ? 0 : 0; // Start with 0% progress
+
+                const deckCard = document.createElement('div');
+                deckCard.className = 'deck-card';
+                deckCard.innerHTML = `
+                    <div class="deck-header">
+                        <div class="deck-title">${deck.title}</div>
+                        <div class="deck-level">${deck.level}</div>
+                    </div>
+                    
+                    <div class="deck-description">${deck.description}</div>
+                    
+                    <div class="deck-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progressPercent}%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0/${deck.cards.length} cards</span>
+                            <span>${Math.round(progressPercent)}%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="deck-meta">
+                        <span>Never studied</span>
+                        <span>${deck.cards.length} cards</span>
+                    </div>
+                    
+                    <div class="deck-actions">
+                        <button class="btn btn-primary" onclick="startStudying('${deck.id}')">
+                            Start Learning
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(deckCard);
+            });
+        }
+
+        function filterDecks() {
+            const searchTerm = document.getElementById('deck-search').value.toLowerCase();
+            const levelFilter = document.getElementById('level-filter').value;
+
+            filteredDecks = allDecks.filter(deck => {
+                const matchesSearch = deck.title.toLowerCase().includes(searchTerm) ||
+                    deck.description.toLowerCase().includes(searchTerm);
+                const matchesLevel = !levelFilter || deck.level === levelFilter;
+                return matchesSearch && matchesLevel;
+            });
+
+            renderDeckGrid();
+        }
+
+        function startStudying(deckId) {
+            currentDeck = allDecks.find(deck => deck.id === deckId);
+            if (!currentDeck || !currentDeck.cards || currentDeck.cards.length === 0) {
+                alert('This deck has no cards available.');
+                return;
+            }
+
+            currentCard = 0;
+            isShowingAnswer = false;
+            userAnswers = {};
+            speechScores = {};
+
+            // Update study view header
+            document.getElementById('current-deck-title').textContent = currentDeck.title;
+            document.getElementById('current-deck-subtitle').textContent = currentDeck.description;
+
+            // Switch to study view
+            document.getElementById('deck-selection').style.display = 'none';
+            document.getElementById('study-view').style.display = 'block';
+
+            loadCard(currentCard);
+        }
+
+        function showDeckSelection() {
+            document.getElementById('study-view').style.display = 'none';
+            document.getElementById('deck-selection').style.display = 'block';
+            currentDeck = null;
+            clearRecording();
+        }
+
+        function loadCard(index) {
+            if (!currentDeck || !currentDeck.cards || index >= currentDeck.cards.length) return;
+
+            const card = currentDeck.cards[index];
+            const progressPercent = ((index + 1) / currentDeck.cards.length) * 100;
+
+            // Update progress
+            document.getElementById('card-counter').innerHTML = `
+                Card ${index + 1} of ${currentDeck.cards.length}<br>
+                <small style="color: #666;">Score: ${calculateCurrentScore()}/100</small>
+            `;
+            document.getElementById('study-progress-fill').style.width = `${progressPercent}%`;
+
+            // Update English sentence
+            document.getElementById('english-sentence').textContent = card.english;
+
+            // Update literal word order
+            const literalDiv = document.getElementById('literal-word-order');
+            literalDiv.innerHTML = card.literalWordOrder.map(word =>
+                `<span class="word-tag ${word.type}">${word.word}</span>`
+            ).join('');
+
+            // Update dropdown options and restore previous answers
+            const dropdownDiv = document.getElementById('dropdown-options');
+            let dropdownHtml = '';
+            for (const [key, options] of Object.entries(card.dropdownOptions)) {
+                const label = key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const savedAnswer = userAnswers[currentCard] && userAnswers[currentCard][key] ? userAnswers[currentCard][key] : '';
+                dropdownHtml += `
+                    <div class="dropdown-row">
+                        <label>${label}:</label>
+                        <select onchange="saveUserAnswer('${key}', this.value)">
+                            <option value="">Select...</option>
+                            ${options.map(option => `<option value="${option}" ${option === savedAnswer ? 'selected' : ''}>${option}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+            }
+            dropdownDiv.innerHTML = dropdownHtml;
+
+            // Update German word breakdown
+            const germanDiv = document.getElementById('german-word-breakdown');
+            germanDiv.innerHTML = card.germanWordBreakdown.map(word =>
+                `<span class="word-tag ${word.type}">${word.word}</span>`
+            ).join('');
+
+            // Update correct answers
+            const answersDiv = document.getElementById('correct-answers');
+            answersDiv.innerHTML = Object.entries(card.correctAnswers).map(([key, value]) =>
+                `<p><strong>${key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}:</strong> ${value}</p>`
+            ).join('');
+
+            // Update detailed analysis
+            const analysisDiv = document.getElementById('detailed-analysis');
+            analysisDiv.innerHTML = Object.entries(card.detailedAnalysis).map(([key, value]) =>
+                `<div style='margin-bottom: 15px;'><strong>${key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}:</strong> ${value}</div>`
+            ).join('');
+
+            // Update target sentence and practice task
+            document.getElementById('target-sentence').textContent = card.german;
+            document.getElementById('practice-task').textContent = card.practiceTask;
+
+            // Clear previous results and reset view
+            document.getElementById('speech-result').style.display = 'none';
+            document.getElementById('practice-input').value = '';
+            document.getElementById('practice-feedback').style.display = 'none';
+            clearRecording();
+
+            // Reset to front side
+            if (isShowingAnswer) {
+                flipCard();
+            }
+        }
+
+        function nextCard() {
+            if (!currentDeck) return;
+
+            if (currentCard < currentDeck.cards.length - 1) {
+                currentCard++;
+                loadCard(currentCard);
+            } else {
+                // Deck completed
+                showFinalScore();
+            }
+        }
+
+        function previousCard() {
+            if (!currentDeck || currentCard <= 0) return;
+
+            currentCard--;
+            loadCard(currentCard);
+        }
+
+        function flipCard() {
+            const frontSide = document.getElementById('front-side');
+            const backSide = document.getElementById('back-side');
+
+            if (isShowingAnswer) {
+                frontSide.style.display = 'block';
+                backSide.style.display = 'none';
+                isShowingAnswer = false;
+            } else {
+                frontSide.style.display = 'none';
+                backSide.style.display = 'block';
+                isShowingAnswer = true;
+            }
+        }
+
+        function calculateCurrentScore() {
+            if (!currentDeck) return 0;
+
+            let totalScore = 0;
+            let completedCards = 0;
+
+            for (let i = 0; i <= currentCard; i++) {
+                if (i < currentDeck.cards.length) {
+                    const cardScore = calculateCardScore(i);
+                    if (cardScore > 0 || userAnswers[i] || speechScores[i]) {
+                        totalScore += cardScore;
+                        completedCards++;
+                    }
+                }
+            }
+
+            return completedCards > 0 ? Math.round(totalScore / completedCards) : 0;
+        }
+
+        function calculateCardScore(cardIndex) {
+            if (!currentDeck || !currentDeck.cards[cardIndex]) return 0;
+
+            const card = currentDeck.cards[cardIndex];
+            const userCardAnswers = userAnswers[cardIndex] || {};
+
+            let correctCount = 0;
+            let totalQuestions = Object.keys(card.correctAnswers).length;
+
+            // Check dropdown answers
+            for (const [key, correctValue] of Object.entries(card.correctAnswers)) {
+                if (userCardAnswers[key] === correctValue) {
+                    correctCount++;
+                }
+            }
+
+            // Calculate base score from dropdowns (0-70 points)
+            let dropdownScore = totalQuestions > 0 ? (correctCount / totalQuestions) * 70 : 0;
+
+            // Add speech score (0-30 points)
+            let speechScore = speechScores[cardIndex] ? (speechScores[cardIndex] / 100) * 30 : 0;
+
+            return Math.round(dropdownScore + speechScore);
+        }
+
+        function saveUserAnswer(questionType, selectedValue) {
+            if (!userAnswers[currentCard]) {
+                userAnswers[currentCard] = {};
+            }
+            userAnswers[currentCard][questionType] = selectedValue;
+        }
+
+        function showFinalScore() {
+            if (!currentDeck) return;
+
+            let totalScore = 0;
+            let completedCards = 0;
+            let perfectCards = 0;
+
+            for (let i = 0; i < currentDeck.cards.length; i++) {
+                const cardScore = calculateCardScore(i);
+                if (cardScore > 0 || userAnswers[i] || speechScores[i]) {
+                    totalScore += cardScore;
+                    completedCards++;
+                    if (cardScore >= 95) perfectCards++;
+                }
+            }
+
+            const averageScore = completedCards > 0 ? Math.round(totalScore / completedCards) : 0;
+            const completionRate = Math.round((completedCards / currentDeck.cards.length) * 100);
+
+            let gradeEmoji = '🎉';
+            let gradeText = 'Excellent!';
+            if (averageScore < 60) {
+                gradeEmoji = '📚';
+                gradeText = 'Keep practicing!';
+            } else if (averageScore < 80) {
+                gradeEmoji = '👍';
+                gradeText = 'Good job!';
+            } else if (averageScore < 95) {
+                gradeEmoji = '🌟';
+                gradeText = 'Great work!';
+            }
+
+            const scorePopup = document.createElement('div');
+            scorePopup.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            `;
+
+            scorePopup.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    max-width: 500px;
+                    text-align: center;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="color: #333; margin-bottom: 20px;">${gradeEmoji} Deck Complete!</h2>
+                    <h3 style="color: #666; margin-bottom: 10px;">${currentDeck.title}</h3>
+                    <div style="font-size: 48px; font-weight: bold; color: #4CAF50; margin: 20px 0;">${averageScore}/100</div>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 30px;">${gradeText}</p>
+                    
+                    <div style="text-align: left; margin: 20px 0;">
+                        <p><strong>📊 Results:</strong></p>
+                        <p>Cards Completed: ${completedCards}/${currentDeck.cards.length} (${completionRate}%)</p>
+                        <p>Perfect Scores: ${perfectCards} cards</p>
+                        <p>Average Score: ${averageScore}/100</p>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <button onclick="restartDeck()" style="
+                            background: linear-gradient(135deg, #4CAF50, #45a049);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            margin: 10px;
+                            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+                        ">🔄 Try Again</button>
+                        
+                        <button onclick="showDeckSelection(); closeScorePopup();" style="
+                            background: linear-gradient(135deg, #2196F3, #1976D2);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            margin: 10px;
+                            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+                        ">📚 Choose Another Deck</button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(scorePopup);
+        }
+
+        function restartDeck() {
+            userAnswers = {};
+            speechScores = {};
+            currentCard = 0;
+            isShowingAnswer = false;
+            closeScorePopup();
+            loadCard(0);
+        }
+
+        function closeScorePopup() {
+            const popup = document.querySelector('div[style*="position: fixed"]');
+            if (popup) popup.remove();
+        }
+
+        function playEnglishAudio() {
+            if (currentDeck && currentDeck.cards[currentCard]) {
+                const audio = document.getElementById('english-audio');
+                audio.src = currentDeck.cards[currentCard].englishAudio;
+                audio.play().catch(e => console.log('Audio play failed:', e));
+            }
+        }
+
+        function playGermanAudio() {
+            if (currentDeck && currentDeck.cards[currentCard]) {
+                const audio = document.getElementById('german-audio');
+                audio.src = currentDeck.cards[currentCard].germanAudio;
+                audio.play().catch(e => console.log('Audio play failed:', e));
+            }
+        }
+
+        // Speech recognition and recording functions
+        function _initSpeechRecognitionObsolete() {
+            if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.lang = 'de-DE';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.onresult = function (event) {
+                    const transcript = event.results[0][0].transcript.toLowerCase().trim();
+                    const confidence = event.results[0][0].confidence;
+                    const target = currentDeck.cards[currentCard].german.toLowerCase().replace(/[\.!?]/g, '').trim();
+
+                    handleSpeechResult(transcript, confidence, target);
+                    stopRecording();
+                };
+
+                recognition.onerror = function (event) {
+                    const resultDiv = document.getElementById('speech-result');
+                    resultDiv.style.display = 'block';
+                    resultDiv.style.background = '#ffebee';
+                    resultDiv.style.border = '2px solid #f44336';
+                    resultDiv.innerHTML = '<strong>❌ Speech recognition error. Try again.</strong>';
+                    stopRecording();
+                };
+
+                recognition.onend = function () {
+                    stopRecording();
+                };
+            }
+        }
+
+        function initSpeechRecognition() {
+            // No longer needed - we're using Whisper transcription instead
+            console.log('Voice recording ready - using OpenAI Whisper for transcription');
+        }
+
+        function _toggleSpeechRecognitionObsolete() {
+            if (!recognition) {
+                const resultDiv = document.getElementById('speech-result');
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#fff3e0';
+                resultDiv.style.border = '2px solid #ff9800';
+                resultDiv.innerHTML =
+                    '<strong>🚫 Speech recognition not available.</strong><br>' +
+                    'This feature requires Chrome, Edge, or Safari with microphone permissions.';
+                return;
+            }
+
+            startRecording();
+
+            try {
+                recognition.start();
+                const resultDiv = document.getElementById('speech-result');
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#e3f2fd';
+                resultDiv.style.border = '2px solid #2196f3';
+                resultDiv.innerHTML = '<strong>🎤 Listening and recording... Speak the German sentence now!</strong>';
+
+                document.getElementById('speak-button').style.display = 'none';
+                document.getElementById('stop-button').style.display = 'inline-block';
+                document.getElementById('playback-button').style.display = 'none';
+
+            } catch (error) {
+                const resultDiv = document.getElementById('speech-result');
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#ffebee';
+                resultDiv.style.border = '2px solid #f44336';
+                resultDiv.innerHTML = '<strong>❌ Could not start speech recognition. Check microphone permissions.</strong>';
+                stopRecording();
+            }
+        }
+
+
+        async function toggleSpeechRecognition() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                showError('Microphone access not available');
+                return;
+            }
+
+            startRecording();
+
+            const resultDiv = document.getElementById('speech-result');
+            resultDiv.style.display = 'block';
+            resultDiv.style.background = '#e3f2fd';
+            resultDiv.style.border = '2px solid #2196f3';
+            resultDiv.innerHTML = '<strong>🎤 Recording... Speak the German sentence now!</strong>';
+
+            document.getElementById('speak-button').style.display = 'none';
+            document.getElementById('stop-button').style.display = 'inline-block';
+            document.getElementById('playback-button').style.display = 'none';
+        }
+
+        function stopSpeechRecognition() {
+            if (recognition) recognition.stop();
+            stopRecording();
+        }
+
+        async function startRecording() {
+            try {
+                recordedChunks = [];
+                recordedAudioBlob = null;
+
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+
+                mediaRecorder.ondataavailable = function (event) {
+                    if (event.data.size > 0) recordedChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = function () {
+                    recordedAudioBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+                    stream.getTracks().forEach(track => track.stop());
+                    document.getElementById('playback-button').style.display = 'inline-block';
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+
+            } catch (error) {
+                console.error('Recording failed:', error);
+            }
+        }
+
+        function _stopRecordingObsolete() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+            }
+
+            document.getElementById('speak-button').style.display = 'inline-block';
+            document.getElementById('stop-button').style.display = 'none';
+        }
+
+
+        function stopRecording() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+
+                // Wait a moment for the recording to finish, then transcribe
+                setTimeout(() => {
+                    if (recordedAudioBlob) {
+                        transcribeAndCheckAudio();
+                    }
+                }, 500);
+            }
+
+            document.getElementById('speak-button').style.display = 'inline-block';
+            document.getElementById('stop-button').style.display = 'none';
+        }
+
+        function playRecording() {
+            if (recordedAudioBlob) {
+                const audioUrl = URL.createObjectURL(recordedAudioBlob);
+                const audio = new Audio(audioUrl);
+
+                audio.play().then(() => console.log('Playing recorded audio'));
+
+                audio.onended = function () {
+                    URL.revokeObjectURL(audioUrl);
+                };
+
+                const resultDiv = document.getElementById('speech-result');
+                const currentContent = resultDiv.innerHTML;
+                resultDiv.innerHTML = currentContent + '<br><small>🔊 Playing your recording...</small>';
+            }
+        }
+
+        function clearRecording() {
+            if (recordedAudioBlob) {
+                recordedAudioBlob = null;
+                recordedChunks = [];
+                document.getElementById('playback-button').style.display = 'none';
+            }
+        }
+
+        async function transcribeAndCheckAudio() {
+            if (!recordedAudioBlob) {
+                showError('No audio recorded');
+                return;
+            }
+
+            const resultDiv = document.getElementById('speech-result');
+            resultDiv.innerHTML = '<div class="spinner"></div><p>🔄 Transcribing your speech...</p>';
+
+            try {
+                const apiKey = getStoredApiKey() || prompt("Enter your OpenAI API key:");
+                if (!apiKey) {
+                    showError('API key required for transcription');
+                    return;
+                }
+
+                storeApiKey(apiKey);
+
+                const formData = new FormData();
+                formData.append('file', recordedAudioBlob, 'audio.webm');
+                formData.append('model', 'whisper-1');
+                formData.append('language', 'de');
+
+                const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Transcription failed: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const transcript = data.text.toLowerCase().trim();
+                const target = currentDeck.cards[currentCard].german.toLowerCase().replace(/[\.!?]/g, '').trim();
+
+                checkTranscriptionMatch(transcript, target);
+
+            } catch (error) {
+                console.error('Transcription error:', error);
+                showError('Transcription failed. Check your API key and try again.');
+            }
+        }
+
+        function checkTranscriptionMatch(transcript, target) {
+            const similarity = calculateSimilarity(transcript, target);
+            const resultDiv = document.getElementById('speech-result');
+
+            let speechScore = 0;
+
+            if (similarity > 0.85) {
+                speechScore = 100;
+                resultDiv.style.background = '#e8f5e8';
+                resultDiv.style.border = '2px solid #4caf50';
+                resultDiv.innerHTML =
+                    '<strong>🌟 Perfect pronunciation!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Target: "<em>' + target + '</em>"<br>' +
+                    'Match: ' + Math.round(similarity * 100) + '% | Score: 100/100';
+            } else if (similarity > 0.65) {
+                speechScore = 75;
+                resultDiv.style.background = '#fff3e0';
+                resultDiv.style.border = '2px solid #ff9800';
+                resultDiv.innerHTML =
+                    '<strong>👍 Good attempt!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Target: "<em>' + target + '</em>"<br>' +
+                    'Match: ' + Math.round(similarity * 100) + '% | Score: 75/100';
+            } else {
+                speechScore = 50;
+                resultDiv.style.background = '#ffebee';
+                resultDiv.style.border = '2px solid #f44336';
+                resultDiv.innerHTML =
+                    '<strong>🔄 Keep practicing!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Target: "<em>' + target + '</em>"<br>' +
+                    'Match: ' + Math.round(similarity * 100) + '% | Score: 50/100<br>' +
+                    '<small>Try speaking more clearly and closer to the microphone.</small>';
+            }
+
+            speechScores[currentCard] = speechScore;
+        }
+
+        function showError(message) {
+            const resultDiv = document.getElementById('speech-result');
+            resultDiv.style.display = 'block';
+            resultDiv.style.background = '#ffebee';
+            resultDiv.style.border = '2px solid #f44336';
+            resultDiv.innerHTML = `<strong>⚠️ ${message}</strong>`;
+        }
+
+        function storeApiKey(key) {
+            // Store in memory for session only
+            window.tempApiKey = key;
+        }
+
+        function getStoredApiKey() {
+            return window.tempApiKey || null;
+        }
+
+        function _handleSpeechResultObsolete(transcript, confidence, target) {
+            const resultDiv = document.getElementById('speech-result');
+            resultDiv.style.display = 'block';
+
+            const similarity = calculateSimilarity(transcript, target);
+
+            let speechScore = 0;
+            if (similarity > 0.8 && confidence > 0.7) {
+                speechScore = 100;
+                resultDiv.style.background = '#e8f5e8';
+                resultDiv.style.border = '2px solid #4caf50';
+                resultDiv.innerHTML =
+                    '<strong>🌟 Excellent pronunciation!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Confidence: ' + Math.round(confidence * 100) + '% | Score: 100/100';
+            } else if (similarity > 0.6 || confidence > 0.5) {
+                speechScore = 75;
+                resultDiv.style.background = '#fff3e0';
+                resultDiv.style.border = '2px solid #ff9800';
+                resultDiv.innerHTML =
+                    '<strong>👍 Good attempt!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Score: 75/100 - Try speaking more clearly.';
+            } else {
+                speechScore = 50;
+                resultDiv.style.background = '#ffebee';
+                resultDiv.style.border = '2px solid #f44336';
+                resultDiv.innerHTML =
+                    '<strong>🔄 Keep practicing!</strong><br>' +
+                    'You said: "<em>' + transcript + '</em>"<br>' +
+                    'Score: 50/100 - Try speaking slower and clearer.';
+            }
+
+            speechScores[currentCard] = speechScore;
+        }
+
+        async function handleSpeechResult(transcript, confidence, target) {
+            // Don't use the old speech recognition transcript - we'll get it from Whisper
+            await transcribeAndCheckAudio();
+        }
+
+        function calculateSimilarity(str1, str2) {
+            const a = str1.toLowerCase();
+            const b = str2.toLowerCase();
+            if (a === b) return 1.0;
+
+            let matches = 0;
+            const minLength = Math.min(a.length, b.length);
+            for (let i = 0; i < minLength; i++) {
+                if (a[i] === b[i]) matches++;
+            }
+            return matches / Math.max(a.length, b.length);
+        }
+
+        // function checkPracticeAnswer() {
+        //     const input = document.getElementById('practice-input').value.trim();
+        //     const feedback = document.getElementById('practice-feedback');
+
+        //     if (!input) {
+        //         feedback.style.display = 'block';
+        //         feedback.style.background = '#fff3e0';
+        //         feedback.style.border = '2px solid #ff9800';
+        //         feedback.innerHTML = '<strong>💭 Please write a practice sentence first!</strong>';
+        //         return;
+        //     }
+
+        //     const hasGermanElements = /[äöüßÄÖÜ]/.test(input) || 
+        //                             /\b(ich|du|er|sie|es|wir|ihr|Sie|der|die|das|ein|eine)\b/i.test(input) ||
+        //                             input.length > 3;
+
+        //     feedback.style.display = 'block';
+
+        //     if (hasGermanElements && (input.includes('.') || input.includes('!') || input.includes('?'))) {
+        //         feedback.style.background = '#e8f5e8';
+        //         feedback.style.border = '2px solid #4caf50';
+        //         feedback.innerHTML = 
+        //             '<strong>✅ Great practice sentence!</strong><br>' +
+        //             'Your sentence: "<em>' + input + '</em>"<br>' +
+        //             'Keep practicing to improve your German writing skills!';
+        //     } else if (hasGermanElements) {
+        //         feedback.style.background = '#fff3e0';
+        //         feedback.style.border = '2px solid #ff9800';
+        //         feedback.innerHTML = 
+        //             '<strong>👍 Good start!</strong><br>' +
+        //             'Your sentence: "<em>' + input + '</em>"<br>' +
+        //             'Remember to add punctuation (. ! ?) at the end.';
+        //     } else {
+        //         feedback.style.background = '#e3f2fd';
+        //         feedback.style.border = '2px solid #2196f3';
+        //         feedback.innerHTML = 
+        //             '<strong>💡 Try using some German words!</strong><br>' +
+        //             'Your sentence: "<em>' + input + '</em>"<br>' +
+        //             'Hint: Use words like "ich", "Sie", "der", "die", "das" or German letters ä, ö, ü, ß.';
+        //     }
+        // }
+        async function checkPracticeAnswer() {
+            const input = document.getElementById('practice-input').value.trim();
+            const feedback = document.getElementById('practice-feedback');
+            const button = event.target;
+
+            if (!input) {
+                feedback.style.display = 'block';
+                feedback.style.background = '#fff3e0';
+                feedback.style.border = '2px solid #ff9800';
+                feedback.innerHTML = '<strong>💭 Please write a practice sentence first!</strong>';
+                return;
+            }
+
+            // Show loading state
+            button.disabled = true;
+            button.innerHTML = '🔄 Checking with AI...';
+            feedback.style.display = 'block';
+            feedback.style.background = '#f5f5f5';
+            feedback.style.border = '2px solid #ccc';
+            feedback.innerHTML = '<div class="spinner"></div><p>Analyzing your German sentence...</p>';
+
+            try {
+                const currentCardData = currentDeck.cards[currentCard];
+                const aiFeedback = await getAIFeedback(input, currentCardData);
+
+                // Display AI feedback
+                feedback.style.background = aiFeedback.isCorrect ? '#e8f5e8' : '#fff3e0';
+                feedback.style.border = aiFeedback.isCorrect ? '2px solid #4caf50' : '2px solid #ff9800';
+                feedback.innerHTML = `
+                    <div style="margin-bottom: 10px;">
+                        <strong>${aiFeedback.isCorrect ? '✅ Correct!' : '📝 Needs improvement'}</strong>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>Your sentence:</strong> "<em>${input}</em>"
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>AI Feedback:</strong> ${aiFeedback.feedback}
+                    </div>
+                    ${aiFeedback.suggestions ? `<div><strong>Suggestions:</strong> ${aiFeedback.suggestions}</div>` : ''}
+                `;
+
+                // Store the result for scoring
+                if (!userAnswers[currentCard]) {
+                    userAnswers[currentCard] = {};
+                }
+                userAnswers[currentCard]['practice_score'] = aiFeedback.isCorrect ? 100 : 50;
+
+            } catch (error) {
+                console.error('AI feedback error:', error);
+                feedback.style.background = '#ffebee';
+                feedback.style.border = '2px solid #f44336';
+                feedback.innerHTML = `
+                    <strong>⚠️ AI service temporarily unavailable</strong><br>
+                    Falling back to basic grammar check...<br><br>
+                    ${getBasicGrammarFeedback(input)}
+                `;
+            }
+
+            // Reset button
+            button.disabled = false;
+            button.innerHTML = 'Check Practice Answer';
+        }
+
+        async function getAIFeedback(userSentence, cardData) {
+            const englishContext = cardData.english;
+            const germanTarget = cardData.german;
+            const practiceTask = cardData.practiceTask;
+
+            // Get API key from user (you'll need to store this securely)
+            const apiKey = prompt("Please enter your OpenAI API key (this will only be stored temporarily):");
+            if (!apiKey) {
+                throw new Error("API key required");
+            }
+
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: 'gpt-4',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: `You are a German language teacher analyzing student practice sentences. 
+                            
+                            Context:
+                            - English sentence: "${englishContext}"
+                            - German target: "${germanTarget}"
+                            - Practice task: "${practiceTask}"
+                            
+                            Analyze the student's German sentence for:
+                            1. Grammar correctness
+                            2. Vocabulary appropriateness
+                            3. Sentence structure
+                            4. Capitalization (German nouns must be capitalized)
+                            5. Word order (German has different word order rules)
+                            
+                            Return a JSON response with:
+                            - "isCorrect": boolean (true if grammar and structure are mostly correct)
+                            - "feedback": string (detailed explanation of what's right/wrong)
+                            - "suggestions": string (specific improvements or alternatives)
+                            
+                            Be encouraging but precise about errors.`
+                        },
+                        {
+                            role: 'user',
+                            content: `Please analyze this German sentence: "${userSentence}"`
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 300
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const aiResponse = data.choices[0].message.content;
+
+            // Parse JSON response from AI
+            try {
+                return JSON.parse(aiResponse);
+            } catch (e) {
+                // Fallback if AI doesn't return proper JSON
+                return {
+                    isCorrect: aiResponse.toLowerCase().includes('correct'),
+                    feedback: aiResponse,
+                    suggestions: "Continue practicing German sentence structure and vocabulary."
+                };
+            }
+        }
+
+        function analyzeGermanSentence(userSentence, englishContext, germanTarget, practiceTask) {
+            // Advanced grammar checking logic
+            const sentence = userSentence.toLowerCase().trim();
+
+            // Check for proper German structure
+            const hasGermanWords = /\b(ich|du|er|sie|es|wir|ihr|Sie|der|die|das|ein|eine|und|aber|mit|von|zu|auf|in|an|für)\b/i.test(sentence);
+            const hasGermanChars = /[äöüß]/.test(sentence);
+            const hasProperPunctuation = /[.!?]$/.test(userSentence);
+            const hasCapitalization = /[A-ZÄÖÜ]/.test(userSentence);
+
+            // Analyze sentence structure
+            let isCorrect = false;
+            let feedback = '';
+            let suggestions = '';
+
+            if (!hasGermanWords && !hasGermanChars) {
+                feedback = 'Your sentence appears to be in English. Try using German vocabulary and grammar structures.';
+                suggestions = 'Include German articles (der, die, das), pronouns (ich, Sie), or verbs with German conjugation.';
+            } else if (!hasProperPunctuation) {
+                feedback = 'Good use of German words! Remember to end your sentence with proper punctuation.';
+                suggestions = 'Add a period (.), exclamation mark (!), or question mark (?) at the end.';
+            } else if (!hasCapitalization) {
+                feedback = 'Nice German vocabulary! In German, remember to capitalize the first word and all nouns.';
+                suggestions = 'Capitalize the first letter and any nouns in your sentence.';
+            } else {
+                // More advanced checks
+                const wordCount = userSentence.split(/\s+/).length;
+                if (wordCount < 3) {
+                    feedback = 'Your German looks good! Try creating a longer, more complex sentence to practice more grammar structures.';
+                    suggestions = 'Add more elements like adjectives, time expressions, or additional clauses.';
+                } else {
+                    isCorrect = true;
+                    feedback = 'Excellent German sentence! You demonstrated proper word order, capitalization, and punctuation. This shows good understanding of German grammar structures.';
+                    suggestions = 'Continue practicing with similar sentence patterns to reinforce these concepts.';
+                }
+            }
+
+            // Check if sentence relates to the current lesson context
+            if (practiceTask && practiceTask.includes('imperative') && userSentence.endsWith('!')) {
+                isCorrect = true;
+                feedback = 'Perfect imperative sentence! You correctly used the command form and proper punctuation.';
+            }
+
+            return {
+                isCorrect,
+                feedback,
+                suggestions: suggestions || null
+            };
+        }
+
+        function getBasicGrammarFeedback(sentence) {
+            // Fallback grammar checking when AI is unavailable
+            const hasGermanElements = /[äöüßÄÖÜ]/.test(sentence) ||
+                /\b(ich|du|er|sie|es|wir|ihr|Sie|der|die|das|ein|eine)\b/i.test(sentence);
+            const hasPunctuation = /[.!?]$/.test(sentence);
+
+            if (!hasGermanElements) {
+                return 'Try using German words like "ich", "Sie", "der", "die", "das" or German letters ä, ö, ü, ß.';
+            } else if (!hasPunctuation) {
+                return 'Good German vocabulary! Add punctuation at the end (. ! ?).';
+            } else {
+                return 'Nice German sentence structure! Keep practicing to improve fluency.';
+            }
+        }
+        lucide.createIcons();
+
+    </script>
+</body>
+
+</html>

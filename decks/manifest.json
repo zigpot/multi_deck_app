@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "created": "2025-08-31 18:45:38",
+  "totalDecks": 2,
+  "totalCards": 4,
+  "decks": [
+    {
+      "id": "02-family-words",
+      "title": "Family Words",
+      "description": "Learn German words vocabulary and phrases with interactive flashcards",
+      "level": "Intermediate",
+      "topic": "Words",
+      "totalCards": 3,
+      "audioFolder": "audio/02-family-words"
+    },
+    {
+      "id": "01-basic-greetings",
+      "title": "Basic Greetings",
+      "description": "Learn German greetings vocabulary and phrases with interactive flashcards",
+      "level": "Beginner",
+      "topic": "Greetings",
+      "totalCards": 1,
+      "audioFolder": "audio/01-basic-greetings"
+    }
+  ]
+}
