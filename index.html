@@ -1076,22 +1076,26 @@
         // Multi-deck application state
         let allDecks = [
             {
-                "id": "02-family-words",
-                "title": "Family Words",
-                "description": "Learn German words vocabulary and phrases with interactive flashcards",
-                "level": "Intermediate",
-                "topic": "Words",
+                "id": "01-basic-greetings",
+                "title": "Basic Greetings",
+                "description": "Learn German greetings vocabulary and phrases with interactive flashcards",
+                "level": "Beginner",
+                "topic": "Greetings",
                 "cards": [
                     {
                         "id": 0,
-                        "english": "Wait.",
-                        "german": "warten.",
-                        "englishAudio": "audio/02-family-words/pair_001_english.mp3",
-                        "germanAudio": "audio/02-family-words/pair_001_german.mp3",
+                        "english": "Excuse me.",
+                        "german": "Entschuldigen Sie!",
+                        "englishAudio": "audio/01-basic-greetings/pair_001_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_001_german.mp3",
                         "literalWordOrder": [
                             {
-                                "word": "Wait",
+                                "word": "Excuse",
                                 "type": "verb"
+                            },
+                            {
+                                "word": "me",
+                                "type": "pronoun"
                             },
                             {
                                 "word": ".",
@@ -1100,27 +1104,31 @@
                         ],
                         "germanWordBreakdown": [
                             {
-                                "word": "warten",
+                                "word": "Entschuldigen",
                                 "type": "verb"
                             },
                             {
-                                "word": ".",
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "!",
                                 "type": "punctuation"
                             }
                         ],
                         "correctAnswers": {
                             "clause_type": "main clause",
-                            "sentence_structure": "VSO (Verb → Subject → Object)",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
                             "case_type": "nominative"
                         },
                         "detailedAnalysis": {
-                            "sentence_type": "This is a simple imperative sentence.",
-                            "german_structure": "In German, imperative sentences often have the verb at the beginning.",
-                            "case_reasoning": "The verb 'warten' is in its base form as it is a command.",
-                            "word_roles": "The verb 'warten' is the main action, and the punctuation marks the end of the command.",
-                            "key_difference": "The key difference is the placement of the verb at the beginning in German imperative sentences."
+                            "sentence_type": "This is a polite imperative sentence in German, where the verb 'Entschuldigen' (Excuse) is used in the imperative form addressing 'Sie' (you formal).",
+                            "german_structure": "In German, the verb 'Entschuldigen' is placed at the beginning of the sentence in imperative form, followed by the pronoun 'Sie' and an exclamation mark.",
+                            "case_reasoning": "The verb 'Entschuldigen' takes the nominative case as the subject of the imperative sentence, while 'Sie' also functions as the subject in the nominative case.",
+                            "word_roles": "The verb 'Entschuldigen' is the imperative verb, 'Sie' is the pronoun representing 'you', and the exclamation mark adds emphasis to the polite request.",
+                            "key_difference": "The key difference between English and German in this sentence is the word order in imperative sentences, where the verb comes first in German."
                         },
-                        "practiceTask": "Create flashcards with English commands on one side and the corresponding German imperative form on the other side.",
+                        "practiceTask": "Create flashcards with the English phrase 'Excuse me.' on one side and 'Entschuldigen Sie!' on the other side. Practice forming polite imperative sentences in German.",
                         "dropdownOptions": {
                             "clause_type": [
                                 "main clause",
@@ -1144,23 +1152,78 @@
                     },
                     {
                         "id": 1,
-                        "english": "Coming.",
-                        "german": "",
-                        "englishAudio": "audio/02-family-words/pair_002_english.mp3",
-                        "germanAudio": "audio/02-family-words/pair_002_german.mp3",
+                        "english": "English",
+                        "german": "Englisch",
+                        "englishAudio": "audio/01-basic-greetings/pair_002_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_002_german.mp3",
                         "literalWordOrder": [
                             {
-                                "word": "Coming",
+                                "word": "English",
+                                "type": "noun"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Englisch",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, the noun 'Englisch' comes after the verb 'ist' following the SVO structure.",
+                            "case_reasoning": "Both 'Englisch' and 'ist' are in the nominative case as the subject and predicate of the sentence.",
+                            "word_roles": "The noun 'Englisch' is the subject, and the verb 'ist' is the predicate.",
+                            "key_difference": "The key difference between English and German here is the position of the noun after the verb in German."
+                        },
+                        "practiceTask": "Create flashcards with the English word 'English' on one side and the German word 'Englisch' on the other side to practice vocabulary.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)"
+                            ],
+                            "case_type": [
+                                "nominative"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "english": "understand",
+                        "german": "Verstehen",
+                        "englishAudio": "audio/01-basic-greetings/pair_003_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_003_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Understand",
                                 "type": "verb"
                             },
                             {
-                                "word": ".",
+                                "word": "you",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "?",
                                 "type": "punctuation"
                             }
                         ],
                         "germanWordBreakdown": [
                             {
-                                "word": "",
+                                "word": "Verstehen",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "?",
                                 "type": "punctuation"
                             }
                         ],
@@ -1170,13 +1233,13 @@
                             "case_type": "nominative"
                         },
                         "detailedAnalysis": {
-                            "sentence_type": "Provide detailed sentence type analysis",
-                            "german_structure": "Explain WHY words are positioned where they are",
-                            "case_reasoning": "Detailed analysis of EACH word's case and grammatical role",
-                            "word_roles": "Break down each word's role in the sentence",
-                            "key_difference": "Specific differences between English and German"
+                            "sentence_type": "This is a simple question clause.",
+                            "german_structure": "In German, the verb usually comes in the second position in a sentence, hence 'Verstehen' is placed first.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence.",
+                            "word_roles": "The verb 'Verstehen' is the action being performed, while 'Sie' is the pronoun referring to the subject 'you'.",
+                            "key_difference": "The main difference is the verb placement, with German often having the verb in second position."
                         },
-                        "practiceTask": "Create a specific practice task based on this sentence pattern",
+                        "practiceTask": "Create flashcards with the English word 'understand' on one side and the German word 'Verstehen' on the other side, practicing the correct word order in questions.",
                         "dropdownOptions": {
                             "clause_type": [
                                 "main clause",
@@ -1199,40 +1262,52 @@
                         }
                     },
                     {
-                        "id": 2,
-                        "english": "and",
-                        "german": "hereinbringen.",
-                        "englishAudio": "audio/02-family-words/pair_003_english.mp3",
-                        "germanAudio": "audio/02-family-words/pair_003_german.mp3",
+                        "id": 3,
+                        "english": "You understand.",
+                        "german": "Sie verstehen?",
+                        "englishAudio": "audio/01-basic-greetings/pair_004_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_004_german.mp3",
                         "literalWordOrder": [
                             {
-                                "word": "and",
-                                "type": "punctuation"
+                                "word": "You",
+                                "type": "pronoun"
                             },
                             {
-                                "word": "hereinbringen",
+                                "word": "understand",
                                 "type": "verb"
+                            },
+                            {
+                                "word": "?",
+                                "type": "punctuation"
                             }
                         ],
                         "germanWordBreakdown": [
                             {
-                                "word": "hereinbringen",
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehen",
                                 "type": "verb"
+                            },
+                            {
+                                "word": "?",
+                                "type": "punctuation"
                             }
                         ],
                         "correctAnswers": {
                             "clause_type": "main clause",
-                            "sentence_structure": "VOS (Verb → Object → Subject)",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
                             "case_type": "nominative"
                         },
                         "detailedAnalysis": {
-                            "sentence_type": "Provide detailed sentence type analysis",
-                            "german_structure": "Explain WHY words are positioned where they are",
-                            "case_reasoning": "Detailed analysis of EACH word's case and grammatical role",
-                            "word_roles": "Break down each word's role in the sentence",
-                            "key_difference": "Specific differences between English and German"
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, the verb 'verstehen' comes after the pronoun 'Sie' in a typical SVO structure.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence, while the verb 'verstehen' is in the accusative case.",
+                            "word_roles": "The pronoun 'Sie' functions as the subject, while the verb 'verstehen' functions as the main verb.",
+                            "key_difference": "The main difference between English and German word order here is the placement of the verb after the subject in German."
                         },
-                        "practiceTask": "Create a specific practice task based on this sentence pattern",
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side, practicing the correct word order and translation.",
                         "dropdownOptions": {
                             "clause_type": [
                                 "main clause",
@@ -1253,41 +1328,99 @@
                                 "genitive"
                             ]
                         }
-                    }
-                ],
-                "audioFolder": "audio/02-family-words"
-            },
-            {
-                "id": "01-basic-greetings",
-                "title": "Basic Greetings",
-                "description": "Learn German greetings vocabulary and phrases with interactive flashcards",
-                "level": "Beginner",
-                "topic": "Greetings",
-                "cards": [
+                    },
                     {
-                        "id": 0,
-                        "english": "yet.",
-                        "german": "Nicht!",
-                        "englishAudio": "audio/01-basic-greetings/pair_002_english.mp3",
-                        "germanAudio": "audio/01-basic-greetings/pair_002_german.mp3",
+                        "id": 4,
+                        "english": "Do you understand?",
+                        "german": "Verstehen Sie?",
+                        "englishAudio": "audio/01-basic-greetings/pair_005_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_005_german.mp3",
                         "literalWordOrder": [
                             {
-                                "word": "Not",
-                                "type": "adverb"
+                                "word": "Understand",
+                                "type": "verb"
                             },
                             {
-                                "word": "!",
+                                "word": "you",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "?",
                                 "type": "punctuation"
                             }
                         ],
                         "germanWordBreakdown": [
                             {
-                                "word": "Nicht",
-                                "type": "adverb"
+                                "word": "Verstehen",
+                                "type": "verb"
                             },
                             {
-                                "word": "!",
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "?",
                                 "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "question clause",
+                            "sentence_structure": "VSO (Verb → Subject → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is an interrogative sentence asking for comprehension.",
+                            "german_structure": "In German, the verb 'Verstehen' comes first in a question, followed by the pronoun 'Sie' and then the question mark.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence.",
+                            "word_roles": "The verb 'Verstehen' is the action being performed, 'Sie' is the pronoun referring to the person being addressed.",
+                            "key_difference": "The key difference is the verb coming before the subject in German questions."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side, practicing the correct word order for questions.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 5,
+                        "english": "I understand.",
+                        "german": "Ich verstehe.",
+                        "englishAudio": "audio/01-basic-greetings/pair_008_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_008_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "I",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Ich",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehe",
+                                "type": "verb"
                             }
                         ],
                         "correctAnswers": {
@@ -1297,12 +1430,924 @@
                         },
                         "detailedAnalysis": {
                             "sentence_type": "This is a simple main clause.",
-                            "german_structure": "In German, adverbs like 'nicht' often come before the verb.",
-                            "case_reasoning": "In this case, 'nicht' is an adverb modifying the verb '!', which does not have a case.",
-                            "word_roles": "The adverb 'nicht' negates the verb '!', creating the meaning of 'Not!'",
-                            "key_difference": "The placement of adverbs can differ between English and German, with German often placing them before the verb."
+                            "german_structure": "In German, the verb usually comes in the second position in a main clause, hence 'Ich verstehe.'",
+                            "case_reasoning": "Both 'Ich' and 'verstehe' are in the nominative case as the subject and verb of the sentence.",
+                            "word_roles": " 'Ich' is the subject (pronoun) and 'verstehe' is the verb.",
+                            "key_difference": "The key difference between English and German word order here is the placement of the verb in the second position in German."
                         },
-                        "practiceTask": "Create a flashcard with the English word 'yet.' and the German translation 'Nicht!' to practice understanding the placement of adverbs in German.",
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side. Practice translating back and forth to reinforce word order differences.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 6,
+                        "english": "I understand English.",
+                        "german": "Ich verstehe Englisch.",
+                        "englishAudio": "audio/01-basic-greetings/pair_009_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_009_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "I",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "English",
+                                "type": "noun"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Ich",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehe",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Englisch",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "Main clause",
+                            "german_structure": "In German, the verb usually comes in the second position in a main clause, hence 'verstehe' is placed after the subject 'Ich'. The noun 'Englisch' follows the verb.",
+                            "case_reasoning": "Ich (nominative) is the subject performing the action, verstehe (nominative) is the verb indicating the action of understanding, and Englisch (nominative) is the direct object receiving the action.",
+                            "word_roles": "Ich is the subject, verstehe is the verb, and Englisch is the direct object.",
+                            "key_difference": "The key difference between English and German word order in this sentence is the placement of the verb. In English, the verb 'understand' comes after the subject 'I', while in German, the verb 'verstehe' comes after the subject 'Ich'."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side. Practice translating back and forth to reinforce word order and vocabulary.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 7,
+                        "english": "You understand.",
+                        "german": "Sie verstehen.",
+                        "englishAudio": "audio/01-basic-greetings/pair_010_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_010_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "You",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehen",
+                                "type": "verb"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause in both English and German.",
+                            "german_structure": "In German, the subject 'Sie' comes before the verb 'verstehen', followed by the punctuation mark.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence, while the verb 'verstehen' is in its infinitive form.",
+                            "word_roles": "Subject (pronoun) - Verb - Punctuation",
+                            "key_difference": "The main difference is the position of the subject pronoun before the verb in German, compared to after the verb in English."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence 'You understand.' on one side and the German sentence 'Sie verstehen.' on the other side. Practice translating back and forth to reinforce word order differences.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 8,
+                        "english": "I understand no English.",
+                        "german": "Ich verstehe kein Englisch.",
+                        "englishAudio": "audio/01-basic-greetings/pair_015_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_015_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "I",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "no",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "English",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Ich",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehe",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "kein",
+                                "type": "adjective"
+                            },
+                            {
+                                "word": "Englisch",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause in both English and German.",
+                            "german_structure": "In German, the verb 'verstehe' is placed before the adverb 'kein' and the noun 'Englisch'. The adverb 'kein' comes before the noun 'Englisch' to indicate 'no English'.",
+                            "case_reasoning": "Ich (pronoun) is in the nominative case as the subject of the sentence. Verstehe (verb) is in the nominative case. Kein (adjective) is in the nominative case. Englisch (noun) is in the nominative case.",
+                            "word_roles": "Ich is the subject, verstehe is the verb, kein is the adjective describing Englisch, and Englisch is the object.",
+                            "key_difference": "The key difference is the placement of the adverb 'no' before the noun 'English' in German, while in English the adverb 'no' comes after the noun 'English'."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side. Practice translating back and forth while paying attention to the placement of adverbs in German.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 9,
+                        "english": "I understand German.",
+                        "german": "Ich verstehe Deutsch.",
+                        "englishAudio": "audio/01-basic-greetings/pair_017_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_017_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "I",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "German",
+                                "type": "noun"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Ich",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehe",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Deutsch",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause.",
+                            "german_structure": "In German, the sentence follows the SVO (Subject → Verb → Object) structure.",
+                            "case_reasoning": "Ich (I) is in the nominative case as the subject, verstehe (understand) is in the nominative case as the verb, and Deutsch (German) is in the accusative case as the object.",
+                            "word_roles": "Ich (pronoun, subject) verstehe (verb) Deutsch (noun, object)",
+                            "key_difference": "The key difference between English and German word order in this sentence is that German follows a strict SVO structure, while English can have variations."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side. Practice translating back and forth to reinforce word order and vocabulary.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 10,
+                        "english": "You understand German.",
+                        "german": "Sie verstehen Deutsch.",
+                        "englishAudio": "audio/01-basic-greetings/pair_019_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_019_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "You",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "German",
+                                "type": "noun"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehen",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Deutsch",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause indicating a statement.",
+                            "german_structure": "In German, the verb 'verstehen' is placed in the second position, following the subject 'Sie'. The object 'Deutsch' comes at the end of the sentence.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence. The verb 'verstehen' does not affect the case of the pronoun. The noun 'Deutsch' is also in the nominative case as the object of the verb.",
+                            "word_roles": "Subject: Sie (pronoun - nominative), Verb: verstehen (verb), Object: Deutsch (noun - nominative)",
+                            "key_difference": "The key difference between English and German word order in this sentence is the placement of the verb. In German, the verb comes in the second position in main clauses, while in English it usually comes after the subject."
+                        },
+                        "practiceTask": "Create a flashcard with the English sentence 'You understand German' on one side, and the German sentence 'Sie verstehen Deutsch' on the other side. Practice translating similar sentences and paying attention to the word order differences between English and German.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 11,
+                        "english": "No, I understand no German.",
+                        "german": "Nein, ich verstehe kein Deutsch.",
+                        "englishAudio": "audio/01-basic-greetings/pair_021_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_021_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "No",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "I",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "understand",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "German",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Nein",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "ich",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "verstehe",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "kein",
+                                "type": "adjective"
+                            },
+                            {
+                                "word": "Deutsch",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause indicating a statement.",
+                            "german_structure": "In German, the adverb 'Nein' comes at the beginning of the sentence, followed by the subject 'ich', then the verb 'verstehe', the negation 'kein', and finally the noun 'Deutsch'.",
+                            "case_reasoning": "The pronoun 'ich' is in the nominative case as the subject of the sentence, while the noun 'Deutsch' is also in the nominative case as the object of the verb 'verstehe'.",
+                            "word_roles": "Adverb 'Nein' modifies the verb, pronoun 'ich' is the subject, verb 'verstehe' is the action, adjective 'kein' negates the noun, and noun 'Deutsch' is the object.",
+                            "key_difference": "The key difference is the placement of the adverb 'No' at the beginning of the sentence in English, while in German the adverb 'Nein' comes first followed by the subject."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side, then practice translating back and forth to reinforce word order and vocabulary.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 12,
+                        "english": "a little.",
+                        "german": "Ein bisschen.",
+                        "englishAudio": "audio/01-basic-greetings/pair_022_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_022_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "A",
+                                "type": "article"
+                            },
+                            {
+                                "word": "little",
+                                "type": "adjective"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Ein",
+                                "type": "article"
+                            },
+                            {
+                                "word": "bisschen",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, the article 'Ein' comes before the noun 'bisschen'.",
+                            "case_reasoning": "The article 'Ein' is in the nominative case, while the noun 'bisschen' is also in the nominative case.",
+                            "word_roles": "The article 'Ein' functions as the indefinite article for 'bisschen', which is the noun meaning 'little'.",
+                            "key_difference": "The key difference is the placement of the article before the noun in German, compared to English where the adjective 'little' comes before the noun."
+                        },
+                        "practiceTask": "Create flashcards with the English word 'a little' on one side and the German words 'Ein bisschen' on the other side to practice vocabulary.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 13,
+                        "english": "Only a Little.",
+                        "german": "Nua",
+                        "englishAudio": "audio/01-basic-greetings/pair_023_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_023_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Only",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "a",
+                                "type": "article"
+                            },
+                            {
+                                "word": "little",
+                                "type": "adjective"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Nur",
+                                "type": "adverb"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, adverbs like 'nur' usually come before the verb.",
+                            "case_reasoning": "Since 'nur' is an adverb, it does not have a case. It simply modifies the meaning of the verb.",
+                            "word_roles": "The adverb 'nur' modifies the verb 'a little'.",
+                            "key_difference": "The key difference here is the placement of the adverb before the verb in German, while in English it comes after."
+                        },
+                        "practiceTask": "Create a flashcard with the English phrase 'Only a Little' on one side and 'Nur' on the other side. Practice translating similar phrases with adverbs before verbs.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 14,
+                        "english": "Only a little.",
+                        "german": "Nur ein bisschen.",
+                        "englishAudio": "audio/01-basic-greetings/pair_024_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_024_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Only",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "a",
+                                "type": "article"
+                            },
+                            {
+                                "word": "little",
+                                "type": "adjective"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Nur",
+                                "type": "adverb"
+                            },
+                            {
+                                "word": "ein",
+                                "type": "article"
+                            },
+                            {
+                                "word": "bisschen",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause indicating a simple statement.",
+                            "german_structure": "In German, adverbs like 'nur' often come before the verb, followed by the article 'ein' and then the noun 'bisschen'.",
+                            "case_reasoning": "Each word in this sentence is in the nominative case, as they are the subject and predicate nominative.",
+                            "word_roles": "Adverb 'Nur' modifies the verb, article 'ein' indicates 'a', and noun 'bisschen' is the subject complement.",
+                            "key_difference": "The key difference is the placement of adverbs before the verb in German, unlike English where they often come after."
+                        },
+                        "practiceTask": "Create flashcards with the English phrase on one side and the German phrase on the other side, testing the learner's ability to translate adverbs, articles, and nouns.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 15,
+                        "english": "an American",
+                        "german": "Amerikaner",
+                        "englishAudio": "audio/01-basic-greetings/pair_025_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_025_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "an",
+                                "type": "article"
+                            },
+                            {
+                                "word": "American",
+                                "type": "noun"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Amerikaner",
+                                "type": "noun"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, the noun 'Amerikaner' comes after the article 'an', following the SVO sentence structure.",
+                            "case_reasoning": "The article 'an' and the noun 'Amerikaner' are both in the nominative case as they are the subject of the sentence.",
+                            "word_roles": "The article 'an' functions as the indefinite article specifying the noun 'American'. The noun 'Amerikaner' is the subject of the sentence.",
+                            "key_difference": "The key difference between English and German in this case is that German combines the article and noun into one word."
+                        },
+                        "practiceTask": "Create flashcards with the English word 'an American' on one side and the German word 'Amerikaner' on the other side. Practice identifying the correct German word for different nationalities.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 16,
+                        "english": "You are.",
+                        "german": "Sie sind.",
+                        "englishAudio": "audio/01-basic-greetings/pair_026_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_026_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "You",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "are",
+                                "type": "verb"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "sind",
+                                "type": "verb"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a simple main clause.",
+                            "german_structure": "In German, the verb 'sind' comes after the pronoun 'Sie' following the SVO structure.",
+                            "case_reasoning": "Both 'Sie' and 'sind' are in the nominative case as the subject and verb of the sentence.",
+                            "word_roles": "Sie (pronoun) is the subject, and sind (verb) is the predicate.",
+                            "key_difference": "The key difference is the capitalization of 'Sie' in German as a formal pronoun."
+                        },
+                        "practiceTask": "Create flashcards with the English pronoun 'You' on one side and the German pronoun 'Sie' on the other side to practice translation.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 17,
+                        "english": "You are an American.",
+                        "german": "Sie sind Amerikaner.",
+                        "englishAudio": "audio/01-basic-greetings/pair_027_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_027_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "You",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "are",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "an",
+                                "type": "article"
+                            },
+                            {
+                                "word": "American",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "sind",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Amerikaner",
+                                "type": "noun"
+                            },
+                            {
+                                "word": ".",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "main clause",
+                            "sentence_structure": "SVO (Subject → Verb → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a main clause in both English and German.",
+                            "german_structure": "In German, the verb 'sind' comes after the subject 'Sie', followed by the predicate 'Amerikaner'.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject, while 'Amerikaner' is also in the nominative case as the predicate nominative.",
+                            "word_roles": "Subject (pronoun), verb, predicate nominative (noun)",
+                            "key_difference": "The key difference is that German capitalizes formal 'you' ('Sie') and the noun 'Amerikaner'."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German sentence on the other side, practicing word order and capitalization.",
+                        "dropdownOptions": {
+                            "clause_type": [
+                                "main clause",
+                                "question clause",
+                                "subordinate clause",
+                                "modal-infinitive"
+                            ],
+                            "sentence_structure": [
+                                "SVO (Subject → Verb → Object)",
+                                "VSO (Verb → Subject → Object)",
+                                "SOV (Subject → Object → Verb)",
+                                "VOS (Verb → Object → Subject)"
+                            ],
+                            "case_type": [
+                                "nominative",
+                                "accusative",
+                                "dative",
+                                "genitive"
+                            ]
+                        }
+                    },
+                    {
+                        "id": 18,
+                        "english": "Are you an American?",
+                        "german": "Sind Sie Amerikaner?",
+                        "englishAudio": "audio/01-basic-greetings/pair_028_english.mp3",
+                        "germanAudio": "audio/01-basic-greetings/pair_028_german.mp3",
+                        "literalWordOrder": [
+                            {
+                                "word": "Are",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "you",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "an",
+                                "type": "article"
+                            },
+                            {
+                                "word": "American",
+                                "type": "noun"
+                            },
+                            {
+                                "word": "?",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "germanWordBreakdown": [
+                            {
+                                "word": "Sind",
+                                "type": "verb"
+                            },
+                            {
+                                "word": "Sie",
+                                "type": "pronoun"
+                            },
+                            {
+                                "word": "Amerikaner",
+                                "type": "noun"
+                            },
+                            {
+                                "word": "?",
+                                "type": "punctuation"
+                            }
+                        ],
+                        "correctAnswers": {
+                            "clause_type": "question clause",
+                            "sentence_structure": "VSO (Verb → Subject → Object)",
+                            "case_type": "nominative"
+                        },
+                        "detailedAnalysis": {
+                            "sentence_type": "This is a question clause as it is asking a question.",
+                            "german_structure": "In German, the verb 'Sind' comes first in a question clause, followed by the subject 'Sie' and then the object 'Amerikaner'.",
+                            "case_reasoning": "The pronoun 'Sie' is in the nominative case as the subject of the sentence, while the noun 'Amerikaner' is also in the nominative case as the predicate nominative.",
+                            "word_roles": "The verb 'Sind' is the action of the sentence, 'Sie' is the subject, and 'Amerikaner' is the predicate nominative.",
+                            "key_difference": "The key difference is that in German, the verb comes first in a question clause, while in English it comes after the subject."
+                        },
+                        "practiceTask": "Create flashcards with the English sentence on one side and the German translation on the other side, focusing on the correct word order for questions.",
                         "dropdownOptions": {
                             "clause_type": [
                                 "main clause",

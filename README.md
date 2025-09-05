@@ -2,12 +2,12 @@
 
 ## 🚀 Professional Multi-Deck Language Learning App
 
-This comprehensive German learning application contains **2 complete decks** with interactive flashcards, speech recognition, and progress tracking.
+This comprehensive German learning application contains **1 complete decks** with interactive flashcards, speech recognition, and progress tracking.
 
 ## 🎯 Features
 
 ### 🏠 **Deck Selection Homepage**
-- Browse all 2 decks with search and filtering
+- Browse all 1 decks with search and filtering
 - Track progress across all decks
 - Professional deck organization by level and topic
 
@@ -65,7 +65,7 @@ multi_deck_app/
 ## 💰 Hosting Costs
 
 - **Netlify Free**: Perfect for this app (100GB bandwidth/month)
-- **Storage**: ~5.0GB total (audio files)
+- **Storage**: ~2.5GB total (audio files)
 - **Bandwidth**: Free tier covers hundreds of users
 - **Custom Domain**: Optional ($12/year)
 
